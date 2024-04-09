@@ -1,11 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Coches Segunda Mano
-    </ion-title>
+    <ion-title> Coches Segunda Mano </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Input condicion para de filtrado -->
+  <!-- implementa [(ngModel)]  -->
+  <ion-input 
+  [(ngModel)]="filtro"
+  placeholder="Filtrar por Nombre, Marca, VIM, Color"> </ion-input>
 
+  <!-- Mostramos el contenido de filtro SOLO Pruebas -->
+  <!-- <h1>{{filtro}}</h1> -->
+
+  <!-- Abirmos el grid -->
+  <ion-grid>
+    <!-- Filas -->
+    <ion-row>
+      <!-- Creamos el contenedor para mostrar las columnas -->
+      <!-- Aquí implementaremos el bucle  1 columna por resultado-->
+      <ng-container>
+        <!-- indicamos las columnas -->
+        <ion-col>
+          <!-- Cada resultado dentro de una ion-card -->
+          <ion-card>
+            <ion-card-content>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
 </ion-content>
