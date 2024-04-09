@@ -1,0 +1,7 @@
+{
+  "name": "appCoches",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
