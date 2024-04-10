@@ -9,24 +9,41 @@
   <!-- implementa [(ngModel)]  -->
   <ion-input 
   [(ngModel)]="filtro"
-  placeholder="Filtrar por Nombre, Marca, VIM, Color"> </ion-input>
+  [ngModelOptions]="{standalone: true}"
+  placeholder="Filtrar por marca modelo o color"
+  > 
+  </ion-input>
 
   <!-- Mostramos el contenido de filtro SOLO Pruebas -->
-  <!-- <h1>{{filtro}}</h1> -->
+  <h1>{{filtro}}</h1>
 
   <!-- Abirmos el grid -->
   <ion-grid>
     <!-- Filas -->
     <ion-row>
       <!-- Creamos el contenedor para mostrar las columnas -->
-      <!-- Aquí implementaremos el bucle  1 columna por resultado-->
-      <ng-container>
+      <!-- Aquí implementaremos el bucle  1 columna por resultado de forma asincrona-->
+      <ng-container *ngFor="let coche of coches" | async>
         <!-- indicamos las columnas -->
-        <ion-col>
+        <ion-col
+        *ngIf="filtro==='' || 
+        coche.marca.includes(filtro) ||
+        coche.modelo.includes(filtro) ||
+        coche.year.toString().includes(filtro) ||
+        coche.color.includes(filtro)
+        "
+        size-xl="2"
+        size-lg="2"
+        size-md="4"
+        size-sm="6"
+        size-xs="12"
+        >
           <!-- Cada resultado dentro de una ion-card -->
           <ion-card>
             <ion-card-content>
-
+              <h1>{{coche.marca}} {{coche.modelo}}</h1>
+              <h2>{{coche.year}} {{coche.color}}</h2>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, ipsa repellat rem quidem ab exercitationem architecto sit</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
