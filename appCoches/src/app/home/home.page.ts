@@ -19,7 +19,7 @@ export class HomePage {
       // Para cada coche, genera una URL de imagen única y asigna esa URL a la propiedad 'imagen' del coche
       this.coches = data.map((coche, index) => {
         // Generamos una URL de imagen única para cada coche.
-        // Uusamos el índice para hacer la URL única, o puedes usar algún otro dato del coche.
+        // Uusamos el índice para hacer la URL única o podemos usar algún otro dato del coche.
         coche.imagen = `https://source.unsplash.com/random/?car,${index}, ${coche.marca}, ${coche.modelo}`;
         return coche;
       });
