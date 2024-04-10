@@ -44,11 +44,13 @@
           <!-- Cada resultado dentro de una ion-card -->
           <ion-card>
             <ion-card-content>
-              <ion-avatar>
+ 
                 <img [src]="coche.imagen" />
-              </ion-avatar>
-              <h1>{{coche.marca}} {{coche.modelo}}</h1>
-              <h2>{{coche.year}} {{coche.color}}</h2>
+          
+              <h1>{{coche.marca}}</h1>
+              <h2>{{coche.modelo}}</h2>
+              <h3>Año {{coche.year}}</h3>
+              <h3>Color: {{coche.color}}</h3>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, ipsa repellat rem quidem ab exercitationem architecto sit</p>
             </ion-card-content>
           </ion-card>
