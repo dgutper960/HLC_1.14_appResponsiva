@@ -12,21 +12,18 @@ export class HomePage {
  filtro: string = '';
 
  // Variable que almacena los datos que llegan del JSON
- coches: any;
+ coches: any; 
 
- // Variable que va a recoger la imagen de unsplash
- imagen: any;
-
- // Cargaremos los datos el JSON nada más abrir la aplicación
  constructor(private httpClient: HttpClient) {
-    this.httpClient.get('https://raw.githubusercontent.com/dgutper960/HLC_1.14_appResponsiva/master/coches.json').subscribe((data: any) => {
-      this.coches = data;
-    });
-
-     // Configuramos la solicitud para obtener la imagen como un Blob
-    this.httpClient.get('https://source.unsplash.com/random/?car', { responseType: 'blob' }).subscribe((response: Blob) => {
-      // Convertimos el Blob a un objeto URL para poder usarlo en el template
-      this.imagen = URL.createObjectURL(response);
+    this.httpClient.get<any[]>('https://raw.githubusercontent.com/dgutper960/HLC_1.14_appResponsiva/master/coches.json').subscribe((data: any[]) => {
+      // Para cada coche, genera una URL de imagen única y asigna esa URL a la propiedad 'imagen' del coche
+      this.coches = data.map((coche, index) => {
+        // Generamos una URL de imagen única para cada coche.
+        // Uusamos el índice para hacer la URL única, o puedes usar algún otro dato del coche.
+        coche.imagen = `https://source.unsplash.com/random/?car,${index}, ${coche.marca}, ${coche.modelo}`;
+        return coche;
+      });
     });
  }
 }
+
