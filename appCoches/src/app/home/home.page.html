@@ -7,6 +7,7 @@
 <ion-content [fullscreen]="true">
   <!-- Input condicion para de filtrado -->
   <!-- implementa [(ngModel)]  -->
+  <!-- [ngModelOptions]="{standalone: true}" -> en caso de que el filtro no funcione -->
   <ion-input 
   [(ngModel)]="filtro"
   [ngModelOptions]="{standalone: true}"
@@ -15,7 +16,7 @@
   </ion-input>
 
   <!-- Mostramos el contenido de filtro SOLO Pruebas -->
-  <h1>{{filtro}}</h1>
+  <!-- <h1>{{filtro}}</h1> -->
 
   <!-- Abirmos el grid -->
   <ion-grid>
@@ -25,6 +26,8 @@
       <!-- Aquí implementaremos el bucle  1 columna por resultado de forma asincrona-->
       <ng-container *ngFor="let coche of coches" | async>
         <!-- indicamos las columnas -->
+        <!-- Incluimos la directiva *ngIf -->
+        <!-- Incluimos el responsive con la directiva size -->
         <ion-col
         *ngIf="filtro==='' || 
         coche.marca.includes(filtro) ||
